@@ -3,7 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SecretController;
-Route::get('/secrets',[SecretController::class,'index']);
+Route::post('login', [App\Http\Controllers\API\AuthController::class, 'login'])->name('login');
+
 
 
 
