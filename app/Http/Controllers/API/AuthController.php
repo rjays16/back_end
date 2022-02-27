@@ -45,7 +45,6 @@ $this->apiToken = uniqid(base64_encode(Str::random(40)));
             'data' => $success,
         ]);
     }
-
 public function login(Request $request){
 //User check
 if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
@@ -64,4 +63,22 @@ return response()->json([
 ]);
 }
 }
+
+    public function user()
+    {
+        if (Auth::check()) {
+            $user = Auth::user();
+            $success['token'] = $this->apiToken;
+            $success['name'] = $user->name;
+            return response()->json([
+                'status' => 'success',
+                'data' => $success
+            ]);
+        } else {
+            return response()->json([
+                'status' => 'error',
+                'data' => 'Unauthorized Access'
+            ]);
+        }
+        }
 }
