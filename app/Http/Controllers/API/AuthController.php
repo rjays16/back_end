@@ -45,7 +45,6 @@ $this->apiToken = uniqid(base64_encode(Str::random(40)));
             'data' => $success,
         ]);
     }
-
 public function login(Request $request){
 //User check
 if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
