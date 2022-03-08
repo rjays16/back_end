@@ -25,6 +25,7 @@ Vue.component('LoginComponent', require('../../../frontend/src/components/LoginC
 Vue.component('SignupComponent', require('../../../frontend/src/components/SignupComponent.vue'))
 Vue.component('DashboardComponent', require('../../../frontend/src/components/DashboardComponent.vue'))
 Vue.component('LoginComponent', require('../../../frontend/src/components/LoginComponent.vue'))
+Vue.component('TaskComponent', require('../../../frontend/src/components/TaskComponent.vue'))
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
