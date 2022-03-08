@@ -5,6 +5,9 @@ use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));
 
+//header("Access-Control-Allow-Origin: *");
+//header("Access-Control-Allow-Methods", "DELETE, POST, GET, OPTIONS");
+
 /*
 |--------------------------------------------------------------------------
 | Check If The Application Is Under Maintenance
@@ -19,6 +22,7 @@ define('LARAVEL_START', microtime(true));
 if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
     require $maintenance;
 }
+
 
 /*
 |--------------------------------------------------------------------------
