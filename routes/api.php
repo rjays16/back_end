@@ -9,3 +9,7 @@ Route::post('count_user', [App\Http\Controllers\API\AuthController::class, 'coun
 Route::post('list_user', [App\Http\Controllers\API\AuthController::class, 'list_user'])->name('list_user');
 Route::post('logout', [App\Http\Controllers\API\AuthController::class, 'logout'])->name('logout');
 
+
+Route::group(['prefix' => 'tasks', 'middleware' => 'auth:sanctum'], function () {
+Route::post('store', [App\Http\Controllers\API\TaskController::class, 'store'])->name('store');
+});
