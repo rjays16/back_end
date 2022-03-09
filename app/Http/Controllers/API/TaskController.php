@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Task;
+use Illuminate\Support\Facades\DB;
 class TaskController extends Controller
 {
     public function store(Request $request)
@@ -24,5 +25,23 @@ class TaskController extends Controller
             'status' => 'success',
             'data' => $success,
         ]);
+    }
+
+    public function list_task(){
+
+        $count = DB::table('tasks')->distinct()->get();
+        return response()->json([
+            'status' => 'success',
+            'data' => $count
+        ]);
+    }
+
+    public function delete($id){
+        $delete = Task::find($id);
+        $delete->delete();
+        return response()->json([
+            'status' => 'success',
+            'data' => $delete
+            ]);
     }
 }
