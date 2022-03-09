@@ -10,6 +10,7 @@ Route::post('list_user', [App\Http\Controllers\API\AuthController::class, 'list_
 Route::post('logout', [App\Http\Controllers\API\AuthController::class, 'logout'])->name('logout');
 
 
-Route::group(['prefix' => 'tasks', 'middleware' => 'auth:sanctum'], function () {
+
 Route::post('store', [App\Http\Controllers\API\TaskController::class, 'store'])->name('store');
-});
+Route::post('list_task', [App\Http\Controllers\API\TaskController::class, 'list_task'])->name('list_task');
+Route::delete('delete/{id}', [App\Http\Controllers\API\TaskController::class, 'delete'])->name('delete');
