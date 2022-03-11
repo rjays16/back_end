@@ -44,4 +44,30 @@ class TaskController extends Controller
             'data' => $delete
             ]);
     }
+
+    public function update($id, Request $request){
+        $update = Task::find($id);
+        $update->update($request->all());
+        return response()->json([
+            'status' => 'success',
+            'data' => $update
+        ]);
+    }
+
+    public function count_task(){
+
+        $count = DB::table('tasks')->count();
+        return response()->json([
+            'status' => 'success',
+            'data' => $count
+        ]);
+    }
+
+    public function getaskinfo(Request $request){
+        $getinfo = DB::table('tasks')->whereIn('id', [$request->id])->get();
+        return response()->json([
+            'status' => 'success',
+            'data' => $getinfo
+        ]);
+    }
 }
