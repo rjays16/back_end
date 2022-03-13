@@ -44,4 +44,40 @@ class TaskController extends Controller
             'data' => $delete
             ]);
     }
+
+    public function update($id, Request $request){
+        $update = Task::find($id);
+        $update->title = $request->title;
+        $update->title_description = $request->title_description;
+        $update->assign_to = $request->assign_to;
+        $update->update();
+        return response()->json([
+            'status' => 'success',
+            'data' => $update
+        ]);
+    }
+
+    public function edit_id($id){
+        $id = Task::find($id);
+        return response()->json([
+            'status' => 'success',
+            'data' => $id
+        ]);
+    }
+    public function count_task(){
+
+        $count = DB::table('tasks')->count();
+        return response()->json([
+            'status' => 'success',
+            'data' => $count
+        ]);
+    }
+
+    public function getaskinfo(Request $request){
+        $getinfo = DB::table('tasks')->whereIn('id', [$request->id])->get();
+        return response()->json([
+            'status' => 'success',
+            'data' => $getinfo
+        ]);
+    }
 }
