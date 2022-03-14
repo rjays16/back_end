@@ -18,3 +18,5 @@ Route::put('update/{id}', [App\Http\Controllers\API\TaskController::class, 'upda
 Route::post('count_task', [App\Http\Controllers\API\TaskController::class, 'count_task'])->name('count_task');
 Route::get('edit_id/{id}', [App\Http\Controllers\API\TaskController::class, 'edit_id'])->name('edit_id');
 Route::get('getaskinfo/{id}', [App\Http\Controllers\API\TaskController::class, 'getaskinfo'])->name('getaskinfo');
+Route::post('list_user_task/{assign_to}', [App\Http\Controllers\API\TaskController::class, 'list_user_task'])->name('list_user_task');
+Route::post('count_task_for_user_assign/{assign_to}', [App\Http\Controllers\API\TaskController::class, 'count_task_for_user_assign'])->name('count_task_for_user_assign');
