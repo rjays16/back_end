@@ -19,7 +19,7 @@ class TaskController extends Controller
         $success['user_id'] = $task->user_id;
         $success['assign_by'] = $task->assign_by;
         $success['assign_to'] = $task->assign_to;
-
+        $success['status'] = $task->status;
         // send output data to vue3
         return response()->json([
             'status' => 'success',
@@ -78,6 +78,32 @@ class TaskController extends Controller
         return response()->json([
             'status' => 'success',
             'data' => $getinfo
+        ]);
+    }
+
+    public function list_user_task($assign_to)
+    {
+        $getlist = DB::table('tasks', 'ts')
+            ->join('users as us', 'ts.user_id', '=', 'us.id')
+            ->select('*')
+            ->where('ts.assign_to', '=', $assign_to)
+            ->get();
+        return response()->json([
+            'status' => 'success',
+            'data' => $getlist
+        ]);
+    }
+
+    public function count_task_for_user_assign($assign_to){
+
+        $count = DB::table('tasks', 'ts')
+            ->join('users as us', 'ts.user_id', '=', 'us.id')
+            ->select('*')
+            ->where('ts.assign_to', '=', $assign_to)
+            ->count();
+        return response()->json([
+            'status' => 'success',
+            'data' => $count
         ]);
     }
 }

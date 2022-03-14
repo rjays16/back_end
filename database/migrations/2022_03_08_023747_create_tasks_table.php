@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->string('assign_by');
             $table->string('assign_to');
+            $table->string('status');
             $table->timestamps();
         });
     }
