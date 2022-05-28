@@ -39,7 +39,7 @@ $this->apiToken = uniqid(base64_encode(Str::random(40)));
         $postArray['password'] = bcrypt($postArray['password']);
         $user = User::create($postArray);
 
-        $success['token'] = $this->apiToken;
+//        $success['token'] = $this->apiToken;
         $success['name'] =  $user->name;
 
         // send output data to vue3
